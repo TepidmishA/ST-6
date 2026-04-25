@@ -189,6 +189,11 @@ public class Program {
     public static FileWriter fileWriter;
     public static PrintWriter printWriter;
     public static void main(String[] args) throws IOException {
+       if (GraphicsEnvironment.isHeadless()) {
+         System.out.println("Running in headless mode - GUI not started");
+         return;
+       }
+       
        JFrame frame = new JFrame("Demo");
        frame.add(new TicTacToePanel(new GridLayout(3,3)));
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
